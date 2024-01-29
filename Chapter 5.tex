@@ -1,0 +1,239 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+\title{Math 206A Probability: Chapter 5 Markov Chains: written by Rick Durrett}
+\author{This article is transcribed by Charlie Seager}
+
+\maketitle
+
+\textbf {Chapter 5.1 Examples}
+
+\textbf {Cahpter 5.2 Construction, Markov Properties}
+
+\textbf {THeorem 5.2.1} $X_n$ is a Markov chain (with respect to $\mathcal{F}_n = \sigma(X_0, X_1 ,..., X_n))$ with transition probability p. That is,
+\begin{center}
+$P_\mu(X_{n+1} \in B | \mathcal{F}_n) = p(X_n, B)$
+\end{center}
+
+\textbf {Theorem 5.2.2 Monotone class theorem} Let $\mathcal{A}$ be a $\pi-system$ that contains $\Omega$ and let $\mathcal{H}$ be a collection of real valued functions that satisfies: \\
+(i) If $A \in \mathcal{A}$ then $1_A \in \mathcal{H}$ \\
+(ii) If f,g $\in \mathcal{H}$ then f + g, and $c f \in \mathcal{H}$ for any real number c. \\
+(iii) If $f_n \in \mathcal{H}$ are nonnegative and increase to a bounded function f then $f \in \mathcal{H}$ \\
+Then $\mathcal{H}$ contains all bounded functions measurable with respect to $\sigma(\mathcal{A})$.
+
+\textbf {Theorem 5.2.3 The Markov property} Let $Y : \Omega_o \to R$ be bounded and measurable
+\begin{center}
+$E_\mu (Y \circ \theta_m |\mathcal{F}_m) = Ex_m Y$
+\end{center}
+
+\textbf {Theorem 5.2.4 Chapman-Kolmogorov equation}
+\begin{center}
+$P_x (X_{m+n} = z) = \sum_y P_x(X_m = y) P_y(X_n = z)$
+\end{center}
+
+\textbf {Theorem 5.2.5 Strong Markov property} Suppose that for each n, $Y_n : \Omega_0 \to R$ is measurable and $|Y_n| \leq M$ for all n. Then
+\begin{center}
+$E_\mu (Y_n \circ \theta_N|\mathcal{F}_N) = Ex_N Y_N$ on $\{N < \infty \}$
+\end{center}
+where the right hand side is $\varphi(x,n) = E_x Y_n$ evaluated at $x = X_N, n = N$
+
+\textbf {Theorem 5.2.6} $P_x (T_y^k < \infty) = p_{xy} p_{yy}^{k-1}$
+Intuitively in order to make k visits to y, we first have to go from x to y and then return k - 1 times to y.
+
+\textbf {Theorem 5.2.7 Reflection principle} $\xi_1, \xi_2 ,...$ be independent and identically distributed with a distribution that is symmetric about 0. Let $S_n = \xi_1 + \dots + \xi_n$ If $a > 0$ then 
+\begin{center}
+$P(sup_{m \leq n} S_m \geq a ) \leq 2P(S_n \geq a)$
+\end{center}
+
+\textbf {Chapter 5.3 Recurrence and Transience}
+
+\textbf {Theorem 5.3.1} y is recurrent if and only if $E_y N(y) = \infty$
+
+\textbf {Theorem 5.3.2} If x is recurrent and $p_{xy} > 0$ then y is recurrent and $p_{yx} = 1$
+
+\textbf {Theorem 5.3.3} Let C be a finite closed set. Then C contains a recurrent state. If C  is irreducible then all states in C are recurrent.
+
+\textbf {Theorem 5.3.5 Decomposition Theorem} Let $R = \{ x : p_{xx} = 1 \}$ be the recurrent states of a Markov chain. R can be written as $\cup_i R_i$, where each $R_i$ is closed and irreducible.
+
+\textbf {Theorem 5.3.8} Suppose S is irreducible and $\varphi \geq 0$ with $E_x \varphi(X_i) \leq \varphi(x)$ for $x \notin F$, a finite set, and $\varphi(x) \to \infty$ as $x \to \infty$ i.e. $\{x : \varphi(x) \leq M \}$ is finite for any $M < \infty$, then the chain is recurrent.
+
+\textbf {Theorem 5.3.10} If $a < x < b$ then
+\begin{center}
+$P_x (T_a < T_b) = \frac{\varphi(b) - \varphi(x)}{\varphi(b) - \varphi(a)} \tab P_X(T_b < T_a) = \frac{\varphi(x) - \varphi(a)}{\varphi(b) - \varphi(a)}$
+\end{center}
+
+\textbf {Theorem 5.3.11} 0 is recurrent if and only if $\varphi(M) \to \infty$ as $M \to \infty$ i.e.,
+\begin{center}
+$\varphi(\infty) = \sum_{m=0}^{\infty} \prod_{j=1}^m \frac{q_j}{p_j} = \infty$
+\end{center}
+If $\varphi(\infty) < \infty$ then $P_x(T_0 = \infty) = \varphi(x)/\varphi(\infty)$
+
+\textbf {Chapter 5.4 Recurrence of Random Walks}
+
+\textbf {Theorem 5.4.1} The set V of recurrent values is either $\emptyset$ or a closed subgroup of $R^d$. In the second case V = U, the set of possible values.
+
+\textbf {Theorem 5.4.3} For any random walk, the following are equivalent: (i) $P(\mathcal{T}_1 < \infty) = 1$, (ii) $P(S_m = 0$ i.o.) = 1 and (iii) $\sum_{m=0}^{\infty} P(S_m = 0) = \infty$
+
+\textbf {Theorem 5.4.4} Simple random walk is recurrent in $d \leq 2$ and transient in $d \geq 3$
+
+\textbf {Lemma 5.4.5} If $\sum_{n=1}^\infty P(||S_n|| < \epsilon) < \infty$ then $P(||S_n|| < \epsilon$ i.o.) = 0. If $\sum_{n=1}^\infty P(||S_n|| < \epsilon) = \infty$ then $P(||S_n|| < 2\epsilon$ i.o.) = 1.
+
+\textbf {Lemma 5.4.6} Let m be an integer $\geq 2$
+\begin{center}
+$\sum_{n=0}^\infty P(||S_n|| < m\epsilon) \leq (2m)^d \sum_{n=0}^\infty P(||S_n|| < \epsilon)$
+\end{center}
+
+\textbf {Theorem 5.4.7} The convergence (resp. divergence) of $\sum_n P(||S_n|| < \epsilon)$ for a single value of $\epsilon > 0$ is sufficient for transience (resp. recurrence).
+
+\textbf {Theorem 5.4.8 Chung Fuchs theorem} Suppose d=1. If the weak law of large numbers holds in the form $S_n / n \to 0$ in probability, then $S_n$ is recurrent.
+
+\textbf {Theorem 5.4.9} If $S_n$ is a random walk in $R^2$ and $S_n / n^{1/2} \Rightarrow$ a nondegenerate normal distribution then $S_n$ is recurrent.
+
+\textbf {Theorem 5.4.10} Let $\delta > 0. S_n$ is recurrent if and only if 
+\begin{center}
+$\int_{(-\delta, \delta)^d} Re \frac{1}{1-\varphi(y)} dy = \infty$
+\end{center}
+
+\textbf {Theorem 5.4.11} Let $\delta > 0 S_n$ is recurrent if and only if
+\begin{center}
+$sup_{r < 1} \int_{(-\delta, \delta)^d} Re \frac{1}{1-\varphi(y)} dy = \infty$
+\end{center}
+
+\textbf {Lemma 5.4.12 Parseval relation} Let $\mu$ and v be probability measures on $R^d$ with ch.f.'s $\varphi$ and $\psi$
+\begin{center}
+$\int \psi (t) \mu (dt) = \int \varphi(x) v(dx)$
+\end{center}
+
+\textbf {lemma 5.4.13} If $|x| \leq \pi/3$ then $1 - cosx \geq x^2 / 4$
+
+\textbf {Theorem 5.4.14} No truly three dimensional random walk is recurrent.
+
+\textbf {Chapter 5.5 Stationary Measures}
+
+\textbf {Theorem 5.5.5} Let $\mu$ be a stationary measure and suppose $X_0$ has "distribution" $\mu$. Then $Y_m = X_{n-m}, 0 \leq m \leq n$ is a Markov chain with initial measure $\mu$ and trnasition probability
+\begin{center}
+$q(x,y) = \mu(y)p(y,x)/\mu(x)$
+\end{center}
+q is called the dual transition probability. If $\mu$ is a reversible measure then q = p.
+
+\textbf {Theorem 5.5.6 Kolmogorov's cycle condition} Suppose p is irreducible. A necessary and sufficient condition for the existence of a reversible measure is that (i) $p(x,y) > 0$ implies $p(y,x) > 0$ and (ii) for any loop $x_0, x_1 ,..., x_n = x_0$ with $\prod_{1 \leq i \leq n} p(x_i, x_{i -1}) > 0$
+\begin{center}
+$\prod_{i=1}^n \frac{p(x_{i-1}, x_i)}{p(x_i, x_{i-1})} = 1$
+\end{center}
+
+\textbf {Theorem 5.5.7} Let x be a recurrent state and let $T = inf\{n \geq 1 : X_n = x\}$. Then
+\begin{center}
+$\mu_x(y) = E_x (\sum_{n=0}^{T-1} 1_{\{X_n = y \}}) = \sum_{n=0}^\infty P_x (X_n = y, T > n)$
+\end{center}
+defines a stationary measure.
+
+\textbf {Theorem 5.5.9} if p isirreducible and recurrent (i.e. all states are) then the stationary measure is unique up to constant multiples.
+
+\textbf {Theorem 5.5.10} If there is a stationary distribtuion then all states that have $\pi(y) > 0$ are recurrent.
+
+\textbf {Theorem 5.5.11} if p is irreducible and has stationary distribution $\pi$, then
+\begin{center}
+$\pi(x) = 1 / E_x T_x$
+\end{center}
+
+\textbf {Theorem 5.5.12} If p is irreducible then the following are equivalent  \\
+(i) Some x is positive recurrent \\
+(ii) There is a stationary distribution \\
+(iii) All states are positive recurrent \\
+This result shows that being positive recurrent is a class property. If it holds for one state in an irreducible set, then it is true for all.
+
+\textbf {Theorem 5.5.15} If p is irreducible and has a stationary distribution $\pi$ then any other stationary measure is a multiple of $\pi$
+
+\textbf {Chapter 5.6 Asymptotic behavior}
+
+\textbf {Theorem 5.6.1} Suppose y is recurrent. For any $x \in S$, as $n \to \infty$
+\begin{center}
+$\frac{N_n(y)}{n} \to \frac{1}{E_y T_y} 1_{\{T_y < \infty\}} \tab P_x -a.s.$
+\end{center}
+Here $1/\infty = 0$
+
+\textbf {lemma 5.6.4} If $p_{xy} > 0$ then $d_y = d_x$
+
+\textbf {Lemma 5.6.5} If $d_x = 1$ then $p^m (x,x) > 0$ for $m \geq m_0$
+
+\textbf {Theorem 5.6.6 Convergence theorem} Suppose p is irreducible aperiodic (i.e. all states have $d_x = 1$), and has stationary distribution $\pi$. Then, as $n \to \infty, p^n(x,y) \to \pi(y)$
+
+\textbf {Chapter 5.7 Periodicity, Tail $\sigma-field$*}
+\textbf {Lemma 5.7.1} Suppose p is irreducible, recurrent, and all states have period d. Fix $x \in S$, and for each $y \in S$, let $K_y = \{ n \geq 1 : p^n (x,y) > 0 \}$ (i) There is an $r_y \in \{0, 1,..,d-1\}$ so that if $n \in K_y$ then $n = r_y$ mod d, i.e. the difference $n - r_y$ is a multiple of d. (ii) Let $S_r = \{y :  r_y = r\}$ for $0 \leq r < d$. If $y \in S_i, z \in S_j$ and $p^n(y,z) > 0$, then $n = (j-i)$ mod d. (iii) $S_0, S_1, ..., S_{d-1}$ are irreducible classes for $p^d$, and all states have period 1.
+
+\textbf {Theorem 5.7.2 Convergence theorem, periodic case} Suppose p is irreducible, has a stationary distribution $\pi$, and all states have period d. Let $x \in S$ and let $S_0, S_1,..,S_{d-1}$ be the cyclic decomposition of the state space with $x \in S_0$ If $y \in S_r$ then
+\begin{center}
+$lim_{m \to \infty} p^{md+r}(x,y) = \pi(y) d$
+\end{center}
+
+\textbf {Theorem 5.7.3} Suppose p is irreducible, recurrent, and all states have period d, $\mathcal{T} = \sigma(\{X_0 \in S_r\}: 0 \leq r < d)$
+
+\textbf {Theorem 5.7.4} Suppose $X_0$ has initial distribution $\mu$. The equations
+\begin{center}
+$h(X_n, n) = E_\mu (Z|\mathcal{F}_n)$ \tab and \tab $Z = lim_{n \to \infty} h(X_n, n)$
+\end{center}
+set up a 1-1 correspondence between bounded $Z \in \mathcal{T}$ and bounded space-time harmonic functions, i.e. bounded $h : S x \{0,1,...\} \to R$, so that $h(X_n, n)$ is a martingale.
+
+\textbf {Theorem 5.7.6} For d-dimensional simple random walk
+\begin{center}
+$\mathcal{T} = \sigma (\{X_0 \in L_i\}, i = 0,1)$
+\end{center}
+
+\textbf {Chapter 5.8 General State Space*}
+
+\textbf {Lemma 5.8.4} $v\bar{p} = \bar{p}$ and $\bar{p}v = p$.
+
+\textbf {Lemma 5.8.5} Let $Y_n$ be an inhomogeneous Markov chain with $p_{2k} = v$ and $p_{2k+1} = \bar{p}$. Then $\bar{X}_n = Y_{2n}$ is a Markov chian with transition probability $\bar{p}$ and $X_n = Y_{2n+1}$ is a Markov chain with transition probaiblity p.
+
+\textbf {Lemma 5.8.6} If $\mu$ is a probability measure on $(S, \mathcal{S})$ then
+\begin{center}
+$E_\mu f(X_n) = E_\mu \bar{f} (\bar{X}_n)$
+\end{center}
+
+\textbf {Chapter 5.8.1 Recurrence and Transience}
+
+\textbf {Theorem 5.8.8} Let $\lambda(C) = \sum_{n=1}^\infty 2^{-n} p^{-n} (\alpha, C)$. In the recurrent case if $\lambda(C) > 0$ then $P_\alpha (\bar{X}_n \in C$ i.o.) = 1. For $\lambda -a.e. x, P_x(R < \infty) = 1$
+
+\textbf {Chapter 5.8.2 Stationary Measures}
+
+\textbf {Theorem 5.8.9} in the recurrent case, there is a $\sigma-finite$ stationary measure $\bar{\mu} << \lambda$
+
+\textbf {Lemma 5.8.10} If v is a $\sigma-finite$ stationary measure for p, then $v(A) < \infty$ and $\bar{v} = v\bar{p}$ is a stationary measure for $\bar{p}$ with $\bar{v}(\alpha) < \infty$
+
+\textbf {Theorem 5.8.11} Suppose p is recurrent. If v is a $\sigma-finite$ stationary measure then $v = \bar{v}(\alpha)\mu$, where $\mu$ is the measure constructed in the proof of theorem 5.8.9.
+
+\textbf {Theorem 5.8.12} Let $X_n$ be an aperiodic recurrent Harris chain with stationary distribution $\pi$. If $P_x(R < \infty) = 1$ then as $n \to \infty$
+\begin{center}
+$||p^n(x, \cdot) - \pi(\cdot)|| \to 0$
+\end{center}
+
+\textbf {Chapter 5.8.4 G1/G/1 queue}
+
+\textbf {Lemma 5.8.13} Suppose $X, Y \geq 0$ are independent and $P(X > x) = e^{-\lambda x}$. Show that $P(X- Y > x) = ae^{-\lambda x}$. Show that $P(X-Y > x) = ae^{-\lambda x}$, where $a = P(X- Y > 0)$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

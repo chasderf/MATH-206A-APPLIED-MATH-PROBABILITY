@@ -1,0 +1,337 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+
+\title{Math 206A Probability: Chapter 4 Martingales: written by Rick Durrett}
+\author{This article is transcribed by Charlie Seager}
+
+\maketitle
+
+\textbf {Chapter 4 Martingales}
+
+\textbf {Chapter 4.1 Conditional Expectation}
+
+\textbf {Lemma 4.1.1} If Y satisfies (i) and (ii) then it is integrable.
+
+\textbf {Theorem 4.1.2} If $X_1 = X_2$ on $B \in \mathcal{F} = E(X_2|\mathcal{F})$ a.s. on B.
+
+\textbf {Chapter 4.1.2 Properties}
+
+\textbf {Theorem 4.1.9} In the first two parts we assume $E|X|, E|Y| < \infty$ \\ 
+(a) Conditional expectation is linear
+\begin{center}
+$E(aX + Y| \mathcal{F}) = aE(X|\mathcal{F}) + E(Y|\mathcal{F})$
+\end{center} 
+(b) If $X \leq Y$ then
+\begin{center}
+$E(X|\mathcal{F}) \leq E(Y|\mathcal{F})$
+\end{center}
+(c) If $X_n \geq 0$ and $X_n \uparrow  X$ with $EX < \infty$ then 
+\begin{center}
+$E(X_n|\mathcal{F}) \uparrow E(X|\mathcal{F})$
+\end{center}
+
+\textbf {Theorem 4.1.10} If $\varphi$ is convex and $E|X|, E|\varphi(X)| < \infty$ then 
+\begin{center}
+$\varphi(E(X|\mathcal{F})) \leq E(\varphi(X)|\mathcal{F})$
+\end{center}
+
+\textbf {Theorem 4.1.11} Conditional expectation is a contraction in $L^p, p \geq 1$
+
+\textbf {Theorem 4.1.12} If $\mathcal{F} \subset \mathcal{G}$ and $E(X|\mathcal{G}) \in \mathcal{F}$ then $E(X|\mathcal{F}) = E(X|\mathcal{G})$.
+
+\textbf {Theorem 4.1.13} If $\mathcal{F}_1 \subset \mathcal{F}_2$ then (i) $E(E(X|\mathcal{F}_1)|\mathcal{F}_2) = E(X|\mathcal{F}_1)$ (ii) $E(E(X|\mathcal{F}_2)|\mathcal{F}_2) = E(X|\mathcal{F}_1)$.
+
+\textbf {Theorem 4.1.14} If $X \in \mathcal{F}$ and $E|Y|, E|XY| < \infty$ then 
+\begin{center}
+$E(XY|\mathcal{F}) = XE(Y|\mathcal{F})$
+\end{center}
+
+\textbf {Theorem 4.1.15} Suppose $EX^2 < \infty$. $E(X|\mathcal{F})$ is the variable $Y \in \mathcal{F}$ that minimizes the "mean square error" $E(X-Y)^2$
+
+\textbf {Chapter 4.1.3 Regular Conditional Probabilities}
+
+\textbf {Theorem 4.1.16} Let $\mu (\omega, A)$ be a r.c.d. for X given $\mathcal{F}$. If $f : (S,\mathcal{S}) \to (R, \mathcal{R})$ has $E|f(X)| < \infty$ then
+\begin{center}
+$E(f(X)|\mathcal{F}) = \int \mu(\omega, dx) f(x)$ \tab a.s.
+\end{center}
+
+\textbf {Theorem 4.1.17} r.c.d.'s exist if $(S, \mathcal{S})$ is nice.
+
+\textbf {Theorem 4.1.18} Suppose X and Y take values in a nice space $(S, \mathcal{S})$ and $\mathcal{G} = \sigma(Y)$. There is a function $\mu : S x \mathcal{S} \to [0,1]$ so that 
+\\
+(i) for each A, $\mu(Y(\omega), A)$ is a version of $P(X \in A|\mathcal{G})$ \\
+(ii) for a.e. $\omega , A \to \mu(Y(\omega), A)$ is a probability measure on $(S, \mathcal{S})$
+
+\textbf {Chapter 4.2 Martingales, Almost Sure Convergence}
+
+\textbf {Theorem 4.2.4} If $X_n$ is a supermartingale then for $n > m, E(X_n|\mathcal{F}_m) \leq X_m$.
+
+\textbf {Theorem 4.2.5} (i) If $X_n$ is a submartingale then for $n > m, E(X_n| \mathcal{F}_m) \geq X_m$ \\
+(ii) If $X_n$ is a martingale then for $n > m, E(X_n|\mathcal{F}_m) = X_m$
+
+\textbf {Theorem 4.2.6} If $X_n$ is a martingale w.r.t. $\mathcal{F}_n$ and $\varphi$ is a convex function with $E|\varphi(X_n)| < \infty$ for all n then $\varphi(X_n)$ is a submartingale w.r.t. $\mathcal{F}_n$. Consequently if $p \geq 1$ and $E|X_n|^p < \infty$ for all n, then $|X_n|^p$ is a submartingale w.r.t. $\mathcal{F}_n$.
+
+\textbf {Theorem 4.2.7} If $X_n$ is a submartingale w.r.t. $\mathcal{F}_n$ and $\varphi$ is an increasing convex function with $E|\varphi(X_n)| < \infty$ for all n, then $\varphi(X_n)$ is a submartingale w.r.t. $\mathcal{F}_n$. Consequently (i) If $X_n$ is a submartingale then $(X_n - a)^+$ is a submartingale. (ii) If $X_n$ is a supermartingale then $X_n \land a$ is a supermartingale.
+
+\textbf {Theorem 4.2.8} Let $X_n, n \geq 0$ be a supermartingale. If $H_n \geq 0$ is predictable and each $H_n$ is bounded then $(H \cdot X)_n$ is a supermartingale.
+
+\textbf {Theorem 4.2.10 Upcrossing inequality} If  $X_m, m \geq 0$ is a submartingale then
+\begin{center}
+$(b-a) EU_n \leq E(X_n - a)^+ - E(X_0 - a)^+$
+\end{center}
+
+\textbf {Theorem 4.2.11 Martingale convergence theorem} If $X_n$ is a submartingale with sup$EX_n^+ < \infty$ then as $n \to \infty, X_n$ converges a.s. to a limit X with $E|X| < \infty$
+
+\textbf {Theorem 4.2.12} If $X_n \geq 0$ is a supermartingale then as $n \to \infty, X_n \to X$ a.s. and $EX \leq EX_0$
+
+\textbf {Chapter 4.3 Examples}
+
+\textbf {Chapter 4.3.1 Bounded Increments}
+
+\textbf {Theorem 4.3.1} Let $X_1 , X_2 ,...$ be a martingale with $|X_{n+1} - X_n| \leq M < \infty$. Let
+\begin{center}
+$C = \{ lim X_n$ exists and is finite \} \\
+$D = \{ lim sup X_n = +\infty$ and lim inf $X_n = -\infty \}$
+\end{center}
+Then $P(C \cup D ) = 1$
+
+\textbf {Theorem 4.3.2 Doob's decomposition} Any submartingale $X_n , n \geq 0$ can be written in a unique way as $X_n = M_n + A_n$ where $M_n$ is a martingale and $A_n$ is a predictable increasing sequence with $A_0 = 0$
+
+\textbf {Theorem 4.3.4 Second Borel-Cantelli lemma, II} Let $\mathcal{F}_n , n \leq 0$ be a filtration with $\mathcal{F}_0 = \{ \emptyset, \Omega \}$ and let $B_n, n \geq 1$ a sequence of events with $B_n \in \mathcal{F}_n$. Then
+\begin{center}
+$\{ B_n i.o. \} = \{ \sum_{n=1}^{\infty} P(B_n | \mathcal{F}_{n-1} = \infty \}$
+\end{center}
+
+\textbf {Chapter 4.3.2 Polya's Urn Scheme} 
+
+\textbf {Chapter 4.3.3 Radon-Nikodym Derivatives}
+
+\textbf {Theorem 4.3.5} Suppose $\mu_n << v_n$ for all n. Let $X_n = d \mu_n / dv_n$ and let X = lim sup $X_n$. Then
+\begin{center}
+$\mu (A) = \int_{A} Xdv + \mu(A \cap \{X = \infty \})$
+\end{center}
+
+\textbf {Lemma 4.3.6} $X_n$ (defined on ($\Omega, \mathcal{F}, v))$ is a martingale w.r.t. $\mathcal{F}_n$.
+
+\textbf {THeorem 4.3.8} $\mu << v$ or $\mu \perp v$, according as $\prod_{m=1}^{\infty} \int \sqrt{q_m} dG_m > 0$ or = 0.
+
+\textbf {Chapter 4.3.4 Branching Processes}
+
+\textbf {Lemma 4.3.9} Let $\mathcal{F}_n = \sigma (\xi_i^m : i \geq 1, 1 \leq m \leq n)$ and $\mu = E \xi_i^m \in (0, \infty)$. Then $Z_n / \mu^n$ is a martingale w.r.t. $\mathcal{F}_n$
+
+\textbf {Theorem 4.3.10} If $\mu < 1$ then $Z_n = 0$ for all n sufficiently large, so $Z_n / \mu^n \to 0$
+
+\textbf {Theorem 4.3.11} If $\mu = 1$ and P$(\xi_i^m = 1) < 1$ then $Z_n = 0$ for all n sufficiently large.
+
+\textbf {Theorem 4.3.12} Suppose $\mu > 1$. If $Z_0 = 1$ then $P(Z_n = 0$ for some n) = p the only solution of $\varphi(p) = p in [0,1)$.
+
+\textbf {Theorem 4.3.13} W = lim $Z_n / \mu^n$ is not = 0 if and only if $\sum p_k k log k < \infty$
+
+\textbf {Chapter 4.4 Doob's inequality, convergence in $L^p, p > 1$}
+
+\textbf {Theorem 4.4.1} If $X_n$ is a submartingale and N is a stopping time with $P(N \leq k) = 1$ then
+\begin{center}
+$EX_0 \leq EX_n \leq EX_k$
+\end{center}
+
+\textbf {Theorem 4.4.2 Doob's inequality} Let $X_m$ be a submartingale
+\begin{center}
+$\bar{X}_n = max_{0 \leq m \leq n} X_m^+$
+\end{center}
+$\lambda > 0$ and $A = \{ \bar{X}_n \geq \lambda \}$. Then
+\begin{center}
+$\lambda P(A) \leq EX_n 1_A \leq EX_n^+$
+\end{center}
+
+\textbf {Theorem 4.4.4 $L^p$ maximum inequality.} If $X_n$ is a submartingale then for $1 < p < \infty$
+\begin{center}
+$E(\bar{X}_n^p) \leq (\frac{p}{p-1})^p E(X_n^+)^p$
+\end{center}
+Consequently if $Y_n$ is a martingale and $Y_n^* = max_{0 \leq m \leq n} |Y_m|$.
+\begin{center}
+$E|Y_n^*|^p \leq (\frac{p}{p-1})^p E(|Y_n|^p)$
+\end{center}
+
+\textbf {Theorem 4.4.6 $L^p$ convergence theorem} If $X_n$ is a martingale with sup $E|X_n|^p < \infty$ where $p > 1$ then $X_n \to X$ a.s. and in $L^p$
+
+\textbf {Theorem 4.4.7 Orthogonality of martingale increments} Let $X_n$ be a martingale with $EX_n^2 < \infty$ for all n. If $m \leq n$ and $Y \in \mathcal{F}_m$ has $EY^2 < \infty$ then
+\begin{center}
+$E((X_n - X_m)Y) = 0$
+\end{center}
+and hence if $\ell < m < n$
+\begin{center}
+$E((X_n - X_m)(X_m - X_{\ell}) = 0$
+\end{center}
+
+\textbf {Theorem 4.4.8 Conditional variance formula} If $X_n$ is amartingale with $EX_n^2 < \infty$ for all n
+\begin{center}
+$E((X_n - X_m)^2|\mathcal{F}_m) = E(X_n^2 | \mathcal{F}_m) - X_m^2$
+\end{center}
+
+\textbf {Chapter 4.5 Square Integrable Martingales*}
+
+\textbf {Theorem 4.5.1} $E(sup_{m} |X_m|^2) \leq 4EA_\infty$
+
+\textbf {Theorem 4.5.2} $lim_{n \to \infty} X_n$ exists and is finite a.s. on $\{ A_{\infty} < \infty \}$.
+
+\textbf {Theorem 4.5.3} Let $f \geq 1$ be increasing with $\int_0^\infty f(t)^{-2} dt < \infty$. Then $X_n / f(A_n) \to 0$ a.s. on \{$A_{\infty} = \infty$ \}
+
+\textbf {Theorem 4.5.5 Second Borel Cantelli Lemma III} Suppose $B_n$ is adapted to $\mathcal{F}_n$ and let $p_n = P(B_n | \mathcal{F}_{n-1})$. Then
+\begin{center}
+$\sum_{m=1}^n 1_{B(m)} / \sum_{m=1}^n p_m \to 1$ \tab a.s. on $\{ \sum_{m=1}^\infty p_m = \infty \}$
+\end{center}
+
+\textbf {Theorem 4.5.7} $E(sup_{n} |X_n|) \leq 3EA_{\infty}^{1/2}$
+
+\textbf {Chapter 4.6 Uniform Integrability, Convergence in $L^1$}
+
+\textbf {Theorem 4.6.1} Given a probability space $(\Omega, \mathcal{F}_0, P)$ and an $X \in L^1$ then \{$E(X|\mathcal{F}): \mathcal{F}$ is a $\sigma-field \subset \mathcal{F}_0 \}$ is uniformly integrable.
+
+\textbf {Theorem 4.6.2} Let $\varphi \geq 0$ be any function with $\varphi(x) / x \to \infty$ as $x \to \infty$, e.g., $\varphi(x) = x^p$ with $p > 1$ or $\varphi(x) = x log^+ x$. If $E\varphi(|X_i|) \leq C$ for all $i \in I$, then $\{X_i : i \in I \}$ is uniformly integrable.
+
+\textbf {Theorem 4.6.3} Suppose that $E|X_n| < \infty$ for all n. If $X_n \to X$ in probability then the following are equivalent: \\
+(i) \{$X_n : n \geq 0 \}$ is unifromly integrable \\
+(ii) $X_n \to X$ in $L^1$ \\
+(iii) $E|X_n| \to E|X| < \infty$
+
+\textbf {Theorem 4.6.4} For a submartingale, the following are equivalent \\
+(i) It is uniformly integrable \\
+(ii) It converges a.s. and in $L^1$ \\
+(iii) It converges in $L^1$.
+
+\textbf {Lemma 4.6.5}  If integrable random variables $X_n \to X$ in $L^1$ then 
+\begin{center}
+$E(X_n : A) \to E(X:A)$
+\end{center}
+
+\textbf {Lemma 4.6.6} if a martingale $X_n \to X$ in $L^1$ then $X_n = E(X|\mathcal{F}_n)$.
+
+\textbf {Theorem 4.6.7} For a martingale, the following are equivalent \\
+(i) It is uniformly integrable \\
+(ii) It converges a.s. and in $L^1$ \\
+(iii) It converges in $L^1$ \\
+(iv) There is an integrable random variable X so that $X_n = E(X| \mathcal{F}_n)$.
+
+\textbf {Theorem 4.6.8} Suppose $\mathcal{F}_n \uparrow \mathcal{F}_\infty$ i.e. $\mathcal{F}_n$ is an increasing sequence of $\sigma-fields$ and $\mathcal{F}_\infty = \sigma(\cup_n \mathcal{F}_n)$. As $n \to \infty$
+\begin{center}
+$E(X|\mathcal{F}_n) \to E(X|\mathcal{F}_\infty)$ \tab a.s. and in $L^1$
+\end{center}
+
+\textbf {Theorem 4.6.9 Levy's 0-1 law} If $\mathcal{F}_n \uparrow \mathcal{F}_\infty$ and $A \in \mathcal{F}_\infty$ then $E(1_A|\mathcal{F}_n) \to 1_A$ a.s.
+
+\textbf {Theorem 4.6.10 Dominated convergence theorem for conditinoal expectations} Suppose $Y_n \to Y$ a.s. and $|Y_n| \leq Z$ for all n where $EZ < \infty$. If $\mathcal{F}_n \uparrow \mathcal{F}_\infty$ then 
+\begin{center}
+$E(Y_n | \mathcal{F}_n) \to E(Y | \mathcal{F}_\infty)$ \tab a.s.
+\end{center}
+
+\textbf {Chapter 4.7 Backiwards Martingales}
+
+\textbf {Theorem 4.7.1} $X_{-\infty} = lim_{n \to -\infty} X_n$ exists a.s. and in $L^1$
+
+\textbf {Theorem 4.7.2} If $X_{-\infty} = lim_{n \to -\infty} X_n$ and $\mathcal{F}_{-\infty} = \cap_n \mathcal{F}_n$, then $X_{-\infty} = E(X_0|\mathcal{F}_{-\infty}$
+
+\textbf {Theorem 4.7.3} If $\mathcal{F}_n \downarrow \mathcal{F}_{-\infty}$ as $n \downarrow -\infty$ (i.e. $\mathcal{F}_{-\infty} = \cap_{n} \mathcal{F}_n)$, then
+\begin{center}
+$E(Y|\mathcal{F}_n) \to E(Y|\mathcal{F}_{-\infty})$ \tab a.s. and in $L^1$
+\end{center}
+
+\textbf {Lemma 4.7.7} Suppose $X_1 , X_2,...$ are i.i.d. and let 
+\begin{center}
+$A_n(\varphi) = \frac{1}{(n)_k} \sum_i \varphi(X_{i,1} ,..., X_{ik})$
+\end{center}
+where the sum is over all sequences of distinct integers $1 \leq i_1 ,..., i_k \leq n$ and 
+\begin{center}
+$(n)_k = n(n - 1) \dots (n - k+1)$
+\end{center}
+is the number of such sequences. If $\varphi$ is bounded, $A_n(\varphi) \to E\varphi(X_1 ,..., X_k)$ a.s.
+
+\textbf {Theorem 4.7.9 de Finetti's Theorem} if $X_1 , X_2 ,...$ are exchangable then conditional on $\mathcal{E}, X_1 , X_2 ,...$ are independent and identically distributed.
+
+\textbf {Chapter 4.8 Optional Stopping Theorems}
+
+\textbf {Theorem 4.8.1} If $X_n$ is uniformly integrable submartingale then for any stopping time N, $X_{N \land n}$ is uniformly integrable
+
+\textbf {Theorem 4.8.2} If $E|X_N| < \infty$ and $X_n^1{N>n}$ is uniformly integrable then $X_{N \land n}$ is uniformly integrable and hence $EX_0 \leq EX_N$.
+
+\textbf {Theorem 4.8.3} If $X_n$ is a uniformly integrable submartingale then for any stopping time $N \leq \infty$, we have $EX_0 \leq EX_N \leq EX_\infty$, where $X_\infty = lim X_n$
+
+\textbf {Theorem 4.8.4} If $X_n$ is a nonnegative supermartingale and $N \leq \infty$ is a stopping time, then $EX_0 \geq EX_N$ where $X_\infty = lim X_n$ which exists by Theorem 4,2.12.
+
+\textbf {Theorem 4.8.5} Suppose $X_n$ is a submartingale and $E(|X_{n+1} - X_n || \mathcal{F}_n) \leq B$ a.s. if N is a stopping time with $EN < \infty$ then $X_{N \land n}$ is uniformly integrable and hence $EX_n \geq EX_0$
+
+\textbf {Chapter 4.8.1 Applications to random walks}
+
+\textbf {Theorem 4.8.6 Wald's equation} If $\xi_1 , \xi_2 ,...$ are i.i.d. with $E\xi_i = \mu, S_n = \xi_1 + \dots + \xi_n$ and N is a stopping time with $EN < \infty$ then $ES_n = \mu EN$
+
+\textbf {Theorem 4.8.7 Symmetric simple random walk} Refers to the special case in which $P(\xi_i = 1) = P(\xi_i = -1) = 1/2$. Suppose $S_0 = x$ and let $N = min\{ n : S_n \notin (a,b)\}$. Writing a subscript x to remind us of the starting point
+\begin{center}
+(a) \tab $P_x (S_N = a) = \frac{b-x}{b-a} \tab P_x(S_N = b) = \frac{x-a}{b-a}$
+\end{center}
+(b) $E_0 N = -ab$ and hence $E_x N = (b-x) (x-a)$
+
+\textbf {Theorem 4.8.8} Let $S_n$ be symmetric random walk with $S_0 = 0$ and let $T_1 = min \{ n : S_n = 1\}$
+\begin{center}
+$Es^{T1} = \frac{1 - \sqrt{1-s^2}}{s}$
+\end{center}
+Inverting the generating function we find
+\begin{center}
+$P(T_1 = 2n -1) = \frac{1}{2n-1} \cdot \frac{(2n)!}{n!n!} 2^{-2n}$
+\end{center}
+
+\textbf {Theorem 4.8.9 Asymmetric simple random walk} refers to the special case in which $P(\xi_i = 1) = p$ and $P(\xi_i = -1) = q = 1 - p$ with $p \neq q$ \\
+(a) If $\varphi(y) = \{(1-p)/p\}^y$ then $\varphi(S_n)$ is a martingale \\
+(b) If we let $T_z = inf\{n : S_n = z\} $ then for $a < x < b$
+\begin{center}
+$P_x(T_a < T_b) = \frac{\varphi(b) - \varphi(x)}{\varphi(b) -\varphi(a)} \tab P_x(T_b < T_a) = \frac{\varphi(x) - \varphi(a)}{\varphi(b)-\varphi(a)}$
+\end{center}
+For the last two parts suppose $1/2 < p < 1$ \\
+(c) If $a < 0$ then $P(min_n S_n \leq a) = P(T_a < \infty) = \{(1-p)/p\}^{-a}$ \\
+(d) If $b > 0$ then $P(T_b < \infty) = 1$ and $ET_b = b/(2p-1)$
+
+\textbf {Chapter 4.9 Combinatorics of simple random walk}
+
+\textbf {Theorem 4.9.1 Reflection principle} If $x, y > 0$ then the number of paths from $(0,x)$ to (n,y) that are 0 at some time is equal to the number of paths from (0, -x) to (n,y).
+
+\textbf {Theorem 4.9.2 The Ballot Theorem} Suppose that in an election candidate A gets $\alpha$ votes and candidate B gets $\beta$ votes where $\beta < \alpha$. The probability that throughout the counting A always leads B is ($\alpha - \beta) / (\alpha + \beta)$
+
+\textbf {Lemma 4.9.3} $P(S_1 \neq 0 ,..., S_{2n} \neq 0) = P(S_{2n} = 0)$
+
+\textbf {Lemma 4.9.4} Let $u_{2m} = P(S_{2m} = 0)$. Then $P(L_{2n} = 2k) = u_{2k} u_{2n-2k}$.
+
+\textbf {Theorem 4.9.5 Arcsine law for the last visit to 0} For $0 < a < b < 1$
+\begin{center}
+$P(a \leq L_{2n} / 2n \leq b) \to \int_a^b \pi^{-1}(x(1-x))^{-1/2} dx$
+\end{center}
+
+\textbf {Theorem 4.9.6 Arcsine law for time above 0} Let $\pi_{2n}$ be the number of segments $(k-1, S_{k-1}) \to (k, S_k)$ that lie above the axis (i.e. in \{$(x,y): y \geq 0 \}),$ and let $u_m = P(S_m = 0)$ 
+\begin{center}
+$P(\pi_{2n} = 2k) = u_{2k}u_{2n-2k}$
+\end{center}
+and consequently, if $0 < a < b < 1$
+\begin{center}
+$P(a \leq \pi_{2n} / 2n \leq b) \to \int_a^b \pi^{-1} (x(1-x))^{1/2} dx$
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
